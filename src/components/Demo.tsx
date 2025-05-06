@@ -5,6 +5,7 @@ import { Input } from "../components/ui/input";
 import { signIn, signOut, getCsrfToken } from "next-auth/react";
 import sdk, {
   AddFrame,
+  ComposeCast,
   FrameNotificationDetails,
   SignIn as SignInCore,
   type Context,
@@ -141,7 +142,10 @@ export default function Demo(
         console.log("primaryButtonClicked");
       });
 
-      console.log("Calling ready");
+      sdk.wallet.ethProvider.on("chainChanged", (chainId) => {
+        console.log("[ethProvider] chainChanged", chainId)
+      })
+
       sdk.actions.ready({});
 
       // Set up a MIPD Store, and request Providers.
@@ -154,7 +158,6 @@ export default function Demo(
       });
     };
     if (sdk && !isSDKLoaded) {
-      console.log("Calling load");
       setIsSDKLoaded(true);
       load();
       return () => {
@@ -321,6 +324,15 @@ export default function Demo(
               </pre>
             </div>
             <SignIn />
+          </div>
+
+          <div className="mb-4">
+            <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
+              <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
+                sdk.actions.composeCast
+              </pre>
+            </div>
+            <ComposeCastAction />
           </div>
 
           <div className="mb-4">
@@ -493,6 +505,31 @@ export default function Demo(
         </div>
       </div>
     </div>
+  );
+}
+
+function ComposeCastAction() {
+  const [result, setResult] = useState<ComposeCast.Result>();
+  const compose = useCallback(async () => {
+    setResult(await sdk.actions.composeCast({
+      text: 'Hello from Demo Mini App',
+      embeds: ["https://test.com/foo%20bar"],
+    }))
+  }, []);
+
+  return (
+    <>
+      <Button
+        onClick={compose}
+      >
+        Compose Cast
+      </Button>
+      {result && (
+        <div className="mt-2 text-xs">
+          <div>Cast Hash: {result.cast.hash}</div>
+        </div>
+      )}
+    </>
   );
 }
 
