@@ -273,6 +273,20 @@ export default function Demo(
     setIsContextOpen((prev) => !prev);
   }, []);
 
+  const { solanaProvider } = sdk.experimental;
+  const [solanaAddress, setSolanaAddress] = useState("");
+  useEffect(() => {
+    (async () => {
+      if (!solanaProvider) {
+        return;
+      }
+      const result = await solanaProvider.request({
+        method: 'connect',
+      });
+      setSolanaAddress(result?.publicKey.toString());
+    })();
+  }, [solanaProvider]);
+
   if (!isSDKLoaded) {
     return <div>Loading...</div>;
   }
@@ -422,7 +436,7 @@ export default function Demo(
         </div>
 
         <div>
-          <h2 className="font-2xl font-bold">Wallet</h2>
+          <h2 className="font-2xl font-bold">Ethereum</h2>
 
           {address && (
             <div className="my-2 text-xs">
@@ -449,7 +463,7 @@ export default function Demo(
           </div>
 
           <div className="mb-4">
-            <SignMessage />
+            <SignEthMessage />
           </div>
 
           {isConnected && (
@@ -503,6 +517,18 @@ export default function Demo(
             </>
           )}
         </div>
+
+        {solanaAddress && (
+          <div>
+            <h2 className="font-2xl font-bold">Solana</h2>
+            <div className="my-2 text-xs">
+              Address: <pre className="inline">{truncateAddress(solanaAddress)}</pre>
+            </div>
+            <div className="mb-4">
+              <SignSolanaMessage />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -533,7 +559,7 @@ function ComposeCastAction() {
   );
 }
 
-function SignMessage() {
+function SignEthMessage() {
   const { isConnected } = useAccount();
   const { connectAsync } = useConnect();
   const {
@@ -624,6 +650,50 @@ function SendEth() {
               ? "Confirmed!"
               : "Pending"}
           </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function SignSolanaMessage() {
+  const [signature, setSignature] = useState<string | undefined>();
+  const [signError, setSignError] = useState<Error | undefined>();
+  const [signPending, setSignPending] = useState(false);
+
+  const handleSignMessage = useCallback(async () => {
+    setSignPending(true);
+    try {
+      const { solanaProvider } = sdk.experimental;
+      if (!solanaProvider) {
+        throw new Error('no Solana provider');
+      }
+      const result = await solanaProvider.signMessage("Hello from Frames v2!");
+      setSignature(result.signature);
+      setSignError(undefined);
+    } catch (e) {
+      if (e instanceof Error) {
+        setSignError(e);
+      }
+      throw e;
+    } finally {
+      setSignPending(false);
+    }
+  }, []);
+
+  return (
+    <>
+      <Button
+        onClick={handleSignMessage}
+        disabled={signPending}
+        isLoading={signPending}
+      >
+        Sign Message
+      </Button>
+      {signError && renderError(signError)}
+      {signature && (
+        <div className="mt-2 text-xs">
+          <div>Signature: {signature}</div>
         </div>
       )}
     </>
