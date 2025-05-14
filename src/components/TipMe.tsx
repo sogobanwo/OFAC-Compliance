@@ -16,7 +16,7 @@ const TipMe = () => {
     "eip155:42220/erc20:0x471EcE3750Da237f93B8E339c536989b8978a438"
   );
   const [isLoading, setIsLoading] = useState(false);
-  const [tipStatus, setTipStatus] = useState({ message: "", success: null });
+  const [tipStatus, setTipStatus] = useState<{message: string, success: boolean | null}>({ message: "", success: null });
 
   // Define token configurations with their decimal places
   const tokenConfigs: Record<string, { name: string; decimals: number }> = {
@@ -92,7 +92,7 @@ const TipMe = () => {
       await sdk.actions.sendToken({
         token,
         amount: parsedAmount,
-        recipientFid: Number(1),
+        recipientFid: Number(getFid()),
       });
 
       setTipStatus({
