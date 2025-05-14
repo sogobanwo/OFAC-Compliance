@@ -11,7 +11,7 @@ declare module "next-auth" {
 }
 
 export const authOptions: AuthOptions = {
-    // Configure one or more authentication providers
+  // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
       name: "Sign in with Farcaster",
@@ -71,7 +71,9 @@ export const authOptions: AuthOptions = {
       }
       return session;
     },
-  }
+  },
+  // Add the secret configuration here
+  secret: process.env.NEXTAUTH_SECRET,
 }
 
 export const getSession = () => getServerSession(authOptions)
