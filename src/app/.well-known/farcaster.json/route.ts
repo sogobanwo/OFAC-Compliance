@@ -2,11 +2,11 @@ export async function GET() {
   const appUrl = process.env.NEXT_PUBLIC_URL;
 
   const config = {
-    accountAssociation: {
-        "header": "eyJmaWQiOjkxNTIsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwMmVmNzkwRGQ3OTkzQTM1ZkQ4NDdDMDUzRURkQUU5NDBEMDU1NTk2In0",
-        "payload": "eyJkb21haW4iOiJyZXdhcmRzLndhcnBjYXN0LmNvbSJ9",
-        "signature": "MHgxMGQwZGU4ZGYwZDUwZTdmMGIxN2YxMTU2NDI1MjRmZTY0MTUyZGU4ZGU1MWU0MThiYjU4ZjVmZmQxYjRjNDBiNGVlZTRhNDcwNmVmNjhlMzQ0ZGQ5MDBkYmQyMmNlMmVlZGY5ZGQ0N2JlNWRmNzMwYzUxNjE4OWVjZDJjY2Y0MDFj"
-    },
+      "accountAssociation": {
+        "header": "eyJmaWQiOjk5NjU0MiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDFGNUUwMzM1NjRBMzUyYWNhZDYyQzlmMTJGNDQxMzk1RkM4QjMzRkYifQ",
+        "payload": "eyJkb21haW4iOiJvZmFjLWNvbXBsaWFuY2UudmVyY2VsLmFwcCJ9",
+        "signature": "MHgzYzZiMDI1N2JlOTI1NDNkNmYwZWZmOTM2NjA2ZDJkYjE2NDdjMTQwNDI0ODA4ZTk5ZTY0ZDgzZWE0MWMzYzBiMDdiNWZkY2VlY2JkOThlMjVjYzFhNzQ4ZmQ0OTU0ZmVjNWFiNDM4N2Y5OTQ4MTkxNTk0NTUxMWUzMzIzNGJjMzFi"
+      },
     frame: {
       version: "1",
       name: "OFAC Compliance Checker",
