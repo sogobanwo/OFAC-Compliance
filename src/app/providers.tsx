@@ -14,7 +14,7 @@ const WagmiProvider = dynamic(
 
 export function Providers({ session, children }: { session: Session | null, children: React.ReactNode }) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={session} basePath="/api/auth">
       <WagmiProvider>
         {children}
       </WagmiProvider>
