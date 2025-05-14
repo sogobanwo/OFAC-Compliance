@@ -1,18 +1,19 @@
-import { Metadata } from "next";
-import VerificationPage from "../components/verification";
+import React from "react";
+import TipMe from "~/components/TipMe";
+import { Metadata } from 'next';
 
 const appUrl = process.env.NEXT_PUBLIC_URL;
 
 const frame = {
   version: "next",
-  imageUrl: `${appUrl}/landing.jpg`,
+  imageUrl: `${appUrl}/tip-me.jpg`,
   button: {
-    title: "Verify your OFAC Compliance",
+    title: "Tip me, I'm OFAC Verified",
     action: {
       type: "launch_frame",
       name: "OFAC Compliance Checker",
-      url: appUrl,
-      splashImageUrl: `https://res.cloudinary.com/dnohqlmjc/image/upload/v1747202727/ComplianceShield_vfpoqn.png`,
+      url: `${appUrl}/share`,
+      splashImageUrl:`https://res.cloudinary.com/dnohqlmjc/image/upload/v1747202727/ComplianceShield_vfpoqn.png`,
       splashBackgroundColor: "#E6F0FA",
     },
   },
@@ -33,6 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
-  return (<VerificationPage />);
-}
+const page = () => {
+  return <TipMe />;
+};
+
+export default page;

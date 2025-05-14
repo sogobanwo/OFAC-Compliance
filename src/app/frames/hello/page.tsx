@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import App from "~/app/app";
+import App from "~/components/verification";
 
 const appUrl = process.env.NEXT_PUBLIC_URL;
 
