@@ -31,18 +31,6 @@ The **OFAC-Compliance-Checker** offers a user-friendly, decentralized approach t
 - **Scalable Integration**: Easy for developers to adopt via **Self Protocol** docs (docs.self.xyz) and **Celo** APIs.
 - **User-Centric**: Intuitive interface for creating and sharing compliance status.
 
-## Use Case
-
-- A creator on **Farcaster** shares content. Fans create a **Self Proof**, verify OFAC compliance, and tip in **cUSD** or **USDC** via **Celo**.
-- A protocol launches an airdrop, uses the **OFAC-Compliance-Checker** to confirm participant compliance, and distributes **Celo** tokens—all within **Farcaster**.
-
-## Getting Started
-
-1. **Visit Self Protocol**: Go to [self.xyz](https://self.xyz) to create a **Self Proof** with OFAC compliance verification.
-2. **Join Farcaster**: Set up a profile on **Farcaster** to display your compliance status.
-3. **Tip with Celo**: Use a **Celo**-compatible wallet to send/receive tips in **cUSD**, **USDT**, **USDC**, or **Celo**.
-4. **Integrate for Developers**: Check [docs.self.xyz](https://docs.self.xyz) for integration guides and explore **Celo**’s developer resources.
-
 ## Resources
 
 - **Website**: [self.xyz](https://self.xyz)
