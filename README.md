@@ -51,21 +51,12 @@ The **OFAC-Compliance-Checker** offers a user-friendly, decentralized approach t
 - **Celo**: Learn about [Celo’s blockchain](https://celo.org) for tipping.
 - **X Profile**: Follow [@selfprotocol](https://x.com/selfprotocol) for updates.
 
-## Contributing
-
-We welcome contributions from the Web3 community! To get involved:
-- Submit feature requests or bug reports via GitHub issues.
-- Explore our [documentation](https://docs.self.xyz) for API details.
-- Join discussions on **Farcaster** or reach out via [@selfprotocol](https://x.com/selfprotocol).
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-Have questions? Reach out on **Farcaster**, X ([@selfprotocol](https://x.com/selfprotocol)), or via [self.xyz](https://self.xyz).
-
----
-
-Simplify compliance, amplify trust, and tip with ease. Let’s build a compliant, inclusive Web3 together!
+Have questions? Reach out on
+ **Farcaster**, [@thecodedcoder](https://warpcast.com/thecodedcoder) 
+**X(twitter)**[theCodedCoder](https://x.com/olorunsogobanwo)
